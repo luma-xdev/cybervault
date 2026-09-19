@@ -1,1 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CyberVault - Cybersecurity Learning and Practice Dashboard">
+  <title>CyberVault | Security Learning Dashboard</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- LOGIN -->
+  <section id="loginScreen" class="login-screen">
+    <div class="login-card">
+
+      <div class="brand large-brand">
+        <div class="brand-icon">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <div>
+          <h1>CyberVault</h1>
+          <span>SECURITY LEARNING SYSTEM</span>
+        </div>
+      </div>
+
+      <div class="login-heading">
+        <h2>Welcome back</h2>
+        <p>Continue your cybersecurity journey.</p>
+      </div>
+
+      <form id="loginForm">
+
+        <label>
+          Email
+          <input
+            id="loginEmail"
+            type="email"
+            placeholder="you@example.com"
+            value="student@cybervault.dev"
+            required
+          >
+        </label>
+
+        <label>
+          Password
+          <div class="password-box">
+            <input
+              id="loginPassword"
+              type="password"
+              placeholder="Enter password"
+              value="cybervault"
+              required
+            >
+            <button type="button" id="passwordToggle">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+        </label>
+
+        <div class="login-options">
+          <label class="check-label">
+            <input type="checkbox" checked>
+            Remember me
+          </label>
+          <span>Demo access enabled</span>
+        </div>
+
+        <button class="primary-btn full-btn" type="submit">
+          Enter CyberVault
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+      </form>
+
+      <p class="demo-hint">
+        Demo credentials are pre-filled.
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- APPLICATION -->
+  <div id="app" class="app hidden">
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="sidebar">
+
+      <div class="brand">
+        <div class="brand-icon">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <div>
+          <h2>CyberVault</h2>
+          <span>SECURITY OS</span>
+        </div>
+      </div>
+
+      <nav class="navigation">
+
+        <p class="nav-label">WORKSPACE</p>
+
+        <button class="nav-item active" data-section="dashboard">
+          <i class="fa-solid fa-grid-2"></i>
+          Dashboard
+        </button>
+
+        <button class="nav-item" data-section="roadmap">
+          <i class="fa-solid fa-route"></i>
+          Roadmap
+        </button>
+
+        <button class="nav-item" data-section="labs">
+          <i class="fa-solid fa-flask"></i>
+          Labs
+        </button>
+
+        <button class="nav-item" data-section="challenges">
+          <i class="fa-solid fa-flag"></i>
+          Challenges
+        </button>
+
+        <button class="nav-item" data-section="notes">
+          <i class="fa-solid fa-note-sticky"></i>
+          Notes
+        </button>
+
+        <p class="nav-label">TOOLS</p>
+
+        <button class="nav-item" data-section="tools">
+          <i class="fa-solid fa-screwdriver-wrench"></i>
+          Security Tools
+        </button>
+
+        <button class="nav-item" data-section="timer">
+          <i class="fa-solid fa-stopwatch"></i>
+          Focus Timer
+        </button>
+
+        <p class="nav-label">ACCOUNT</p>
+
+        <button class="nav-item" data-section="achievements">
+          <i class="fa-solid fa-trophy"></i>
+          Achievements
+        </button>
+
+        <button class="nav-item" data-section="settings">
+          <i class="fa-solid fa-gear"></i>
+          Settings
+        </button>
+
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="profile-mini">
+          <div class="avatar">CV</div>
+          <div>
+            <strong>Security Student</strong>
+            <span>Level 07</span>
+          </div>
+        </div>
+
+        <button id="logoutBtn" class="logout-btn">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          Logout
+        </button>
+      </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <header class="topbar">
+
+        <button id="mobileMenuBtn" class="mobile-menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div>
+          <p class="eyebrow">CYBERVAULT / <span id="pageTitle">Dashboard</span></p>
+          <h1 id="headerTitle">Security Command Center</h1>
+        </div>
+
+        <div class="top-actions">
+
+          <button id="themeToggle" class="icon-btn" title="Toggle theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+
+          <button id="notificationBtn" class="icon-btn notification-button">
+            <i class="fa-solid fa-bell"></i>
+            <span id="notificationDot"></span>
+          </button>
+
+        </div>
+
+      </header>
+
+
+      <!-- DASHBOARD -->
+      <section id="dashboardSection" class="page-section active-section">
+
+        <div class="hero">
+          <div>
+            <span class="badge green">
+              <i class="fa-solid fa-circle"></i>
+              SYSTEM ONLINE
+            </span>
+
+            <h2>Build your security skills.</h2>
+            <p>
+              Track your labs, challenges, knowledge and cybersecurity progress
+              from one command center.
+            </p>
+          </div>
+
+          <div class="hero-shield">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+        </div>
+
+
+        <div class="stats-grid">
+
+          <div class="stat-card">
+            <div class="stat-icon purple">
+              <i class="fa-solid fa-flask"></i>
+            </div>
+            <span>Labs Completed</span>
+            <strong id="dashLabs">0</strong>
+            <small>Hands-on practice</small>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon cyan">
+              <i class="fa-solid fa-flag"></i>
+            </div>
+            <span>Challenges</span>
+            <strong id="dashChallenges">0</strong>
+            <small>Challenges solved</small>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon green">
+              <i class="fa-solid fa-code"></i>
+            </div>
+            <span>Skills</span>
+            <strong id="dashSkills">0%</strong>
+            <small>Overall progress</small>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon orange">
+              <i class="fa-solid fa-fire"></i>
+            </div>
+            <span>Streak</span>
+            <strong id="dashStreak">7</strong>
+            <small>Days active</small>
+          </div>
+
+        </div>
+
+
+        <div class="dashboard-grid">
+
+          <div class="panel progress-panel">
+
+            <div class="panel-header">
+              <div>
+                <span class="eyebrow">SKILL MATRIX</span>
+                <h3>Cybersecurity Progress</h3>
+              </div>
+              <span id="overallProgressLabel">0%</span>
+            </div>
+
+            <div class="overall-progress">
+              <div id="overallProgressBar"></div>
+            </div>
+
+            <div id="skillProgressList" class="skill-list"></div>
+
+          </div>
+
+
+          <div class="panel activity-panel">
+
+            <div class="panel-header">
+              <div>
+                <span class="eyebrow">LIVE FEED</span>
+                <h3>Recent Activity</h3>
+              </div>
+            </div>
+
+            <div id="activityList"></div>
+
+          </div>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="panel-header">
+            <div>
+              <span class="eyebrow">MISSION CONTROL</span>
+              <h3>Upcoming Work</h3>
+            </div>
+
+            <button class="text-btn" data-section-target="labs">
+              View Labs
+            </button>
+          </div>
+
+          <div id="dashboardTasks" class="task-list"></div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ROADMAP -->
+      <section id="roadmapSection" class="page-section">
+
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">LEARNING PATH</span>
+            <h2>Cybersecurity Roadmap</h2>
+            <p>Move through the fundamentals and track your progress.</p>
+          </div>
+        </div>
+
+        <div id="roadmapGrid" class="roadmap-grid"></div>
+
+      </section>
+
+
+      <!-- LABS -->
+      <section id="labsSection" class="page-section">
+
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">HANDS-ON</span>
+            <h2>Lab Tracker</h2>
+            <p>Keep your practical cybersecurity work organized.</p>
+          </div>
+
+          <button id="addLabBtn" class="primary-btn">
+            <i class="fa-solid fa-plus"></i>
+            Add Lab
+          </button>
+        </div>
+
+        <div class="toolbar">
+          <div class="search-box">
+            <i class="fa-solid fa-search"></i>
+            <input id="labSearch" type="search" placeholder="Search labs...">
+          </div>
+
+          <select id="labFilter">
+            <option value="all">All Labs</option>
+            <option value="completed">Completed</option>
+            <option value="in-progress">In Progress</option>
+            <option value="planned">Planned</option>
+          </select>
+
+          <select id="labDifficulty">
+            <option value="all">All Difficulty</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+        </div>
+
+        <div id="labsGrid" class="cards-grid"></div>
+
+      </section>
+
+
+      <!-- CHALLENGES -->
+      <section id="challengesSection" class="page-section">
+
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">MISSION LOG</span>
+            <h2>Challenge Tracker</h2>
+            <p>Record completed security challenges.</p>
+          </div>
+
+          <button id="addChallengeBtn" class="primary-btn">
+            <i class="fa-solid fa-plus"></i>
+            Add Challenge
+          </button>
+        </div>
+
+        <div class="challenge-summary">
+
+          <div class="challenge-score">
+            <span>Completed</span>
+            <strong id="challengeCompleted">0</strong>
+          </div>
+
+          <div class="challenge-score">
+            <span>In Progress</span>
+            <strong id="challengeProgress">0</strong>
+          </div>
+
+          <div class="challenge-score">
+            <span>Total</span>
+            <strong id="challengeTotal">0</strong>
+          </div>
+
+        </div>
+
+        <div id="challengeList" class="table-like"></div>
+
+      </section>
+
+
+      <!-- NOTES -->
+      <section id="notesSection" class="page-section">
+
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">KNOWLEDGE BASE</span>
+            <h2>Security Notes</h2>
+            <p>Keep your important learning notes in one place.</p>
+          </div>
+
+          <button id="addNoteBtn" class="primary-btn">
+            <i class="fa-solid fa-plus"></i>
+            New Note
+          </button>
+        </div>
+
+        <div class="toolbar">
+          <div class="search-box">
+            <i class="fa-solid fa-search"></i>
+            <input id="noteSearch" type="search" placeholder="Search notes...">
+          </div>
+
+          <select id="noteCategory">
+            <option value="all">All Categories</option>
+            <option value="Networking">Networking</option>
+            <option value="Linux">Linux</option>
+            <option value="Web Security">Web Security</option>
+            <option value="Pentesting">Pentesting</option>
+            <option value="Defensive Security">Defensive Security</option>
+            <option value="Tools">Tools</option>
+          </select>
+        </div>
+
+        <div id="notesGrid" class="notes-grid"></div>
+
+      </section>
+
+
+      <!-- TOOLS -->
+      <section id="toolsSection" class="page-section">
+
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">UTILITY DECK</span>
+            <h2>Security Tools</h2>
+            <p>Educational browser-based security utilities.</p>
+          </div>
+        </div>
+
+        <div class="tools-grid">
+
+          <div class="tool-card">
+
+            <div class="tool-title">
+              <i class="fa-solid fa-key"></i>
+              <div>
+                <h3>Password Strength</h3>
+                <span>Local browser check</span>
+              </div>
+            </div>
+
+            <input id="passwordCheckInput"
+                   type="password"
+                   placeholder="Enter a password">
+
+            <div class="strength-track">
+              <div id="passwordStrengthBar"></div>
+            </div>
+
+            <strong id="passwordStrengthText">Enter a password</strong>
+
+          </div>
+
+
+          <div class="tool-card">
+
+            <div class="tool-title">
+              <i class="fa-solid fa-code"></i>
+              <div>
+                <h3>Base64 Utility</h3>
+                <span>Encode / decode text</span>
+              </div>
+            </div>
+
+            <textarea id="base64Input"
+                      placeholder="Enter text..."></textarea>
+
+            <div class="tool-buttons">
+              <button id="base64Encode" class="secondary-btn">Encode</button>
+              <button id="base64Decode" class="secondary-btn">Decode</button>
+            </div>
+
+            <textarea id="base64Output"
+                      readonly
+                      placeholder="Result..."></textarea>
+
+          </div>
+
+
+          <div class="tool-card">
+
+            <div class="tool-title">
+              <i class="fa-solid fa-link"></i>
+              <div>
+                <h3>URL Encoder</h3>
+                <span>Encode / decode URL text</span>
+              </div>
+            </div>
+
+            <textarea id="urlInput"
+                      placeholder="Enter URL or text..."></textarea>
+
+            <div class="tool-buttons">
+              <button id="urlEncode" class="secondary-btn">Encode</button>
+              <button id="urlDecode" class="secondary-btn">Decode</button>
+            </div>
+
+            <textarea id="urlOutput"
+                      readonly
+                      placeholder="Result..."></textarea>
+
+          </div>
+
+
+          <div class="tool-card">
+
+            <div class="tool-title">
+              <i class="fa-solid fa-fingerprint"></i>
+              <div>
+                <h3>Hash Identifier</h3>
+                <span>Educational pattern detection</span>
+              </div>
+            </div>
+
+            <input id="hashInput"
+                   type="text"
+                   placeholder="Paste a hash...">
+
+            <div id="hashResult" class="tool-result">
+              Waiting for input...
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- TIMER -->
+      <section id="timerSection" class="page-section">
+
+        <div class="timer-layout">
+
+          <div class="panel timer-panel">
+
+            <span class="eyebrow">FOCUS PROTOCOL</span>
+            <h2 id="timerMode">Focus Session</h2>
+
+            <div id="timerDisplay" class="timer-display">
+              25:00
+            </div>
+
+            <div class="timer-presets">
+              <button data-minutes="25">25 min</button>
+              <button data-minutes="50">50 min</button>
+              <button data-minutes="5">5 min</button>
+            </div>
+
+            <div class="timer-actions">
+              <button id="timerStart" class="primary-btn">
+                <i class="fa-solid fa-play"></i>
+                Start
+              </button>
+
+              <button id="timerReset" class="secondary-btn">
+                Reset
+              </button>
+            </div>
+
+            <p id="timerStatus">Ready when you are.</p>
+
+          </div>
+
+
+          <div class="panel">
+
+            <span class="eyebrow">SESSION STATS</span>
+            <h3>Focus History</h3>
+
+            <div class="timer-stat">
+              <span>Sessions completed</span>
+              <strong id="timerSessions">0</strong>
+            </div>
+
+            <div class="timer-stat">
+              <span>Total focus minutes</span>
+              <strong id="timerMinutes">0</strong>
+            </div>
+
+            <div class="timer-stat">
+              <span>Current streak</span>
+              <strong>7 days</strong>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ACHIEVEMENTS -->
+      <section id="achievementsSection" class="page-section">
+
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">REWARDS</span>
+            <h2>Achievements</h2>
+            <p>Milestones unlocked through consistent learning.</p>
+          </div>
+        </div>
+
+        <div id="achievementGrid" class="achievement-grid"></div>
+
+      </section>
+
+
+      <!-- SETTINGS -->
+      <section id="settingsSection" class="page-section">
+
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">SYSTEM</span>
+            <h2>Settings</h2>
+            <p>Configure your CyberVault workspace.</p>
+          </div>
+        </div>
+
+        <div class="settings-list">
+
+          <div class="setting-row">
+            <div>
+              <strong>Dark Mode</strong>
+              <span>Use the CyberVault dark interface.</span>
+            </div>
+
+            <label class="switch">
+              <input id="darkModeSwitch" type="checkbox" checked>
+              <span></span>
+            </label>
+          </div>
+
+          <div class="setting-row">
+            <div>
+              <strong>Notifications</strong>
+              <span>Show workspace activity notifications.</span>
+            </div>
+
+            <label class="switch">
+              <input id="notificationSwitch" type="checkbox" checked>
+              <span></span>
+            </label>
+          </div>
+
+          <div class="setting-row">
+            <div>
+              <strong>Export Data</strong>
+              <span>Download your CyberVault data as JSON.</span>
+            </div>
+
+            <button id="exportDataBtn" class="secondary-btn">
+              Export
+            </button>
+          </div>
+
+          <div class="setting-row">
+            <div>
+              <strong>Reset Workspace</strong>
+              <span>Restore the demo data.</span>
+            </div>
+
+            <button id="resetDataBtn" class="danger-btn">
+              Reset
+            </button>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+
+    <!-- NOTIFICATION PANEL -->
+    <aside id="notificationPanel" class="notification-panel">
+
+      <div class="notification-header">
+        <div>
+          <strong>Notifications</strong>
+          <span>Recent system activity</span>
+        </div>
+
+        <button id="closeNotifications" class="icon-btn">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div id="notificationItems"></div>
+
+    </aside>
+
+  </div>
+
+
+  <!-- MODAL -->
+  <div id="modalOverlay" class="modal-overlay">
+
+    <div class="modal">
+
+      <div class="modal-header">
+        <div>
+          <span id="modalEyebrow" class="eyebrow">CREATE</span>
+          <h2 id="modalTitle">Add Item</h2>
+        </div>
+
+        <button id="modalClose" class="icon-btn>
+          <i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div i="modalBody"></div>
+    </div>
+  </div>
+  <!--TOAST-->
+  <div id="toastContainer" class="toast-container"></div>
+  <script src="script.js"></script>
+</body>vody>
+</html>
+  
+  
+        
+      
