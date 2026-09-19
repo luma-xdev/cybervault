@@ -522,43 +522,164 @@ function navigate(section) {
 
 function initializeButtons() {
 
-  $("#addLabBtn")
-    .addEventListener(
-      "click",
-      openLabModal
-    );
+  const addLabBtn = $("#addLabBtn");
+  if (addLabBtn) {
+    addLabBtn.addEventListener("click", openLabModal);
+  }
 
-  $("#addChallengeBtn")
-    .addEventListener(
-      "click",
-      openChallengeModal
-    );
+  const addChallengeBtn = $("#addChallengeBtn");
+  if (addChallengeBtn) {
+    addChallengeBtn.addEventListener("click", openChallengeModal);
+  }
 
-  $("#addNoteBtn")
-    .addEventListener(
-      "click",
-      openNoteModal
-    );
+  const addNoteBtn = $("#addNoteBtn");
+  if (addNoteBtn) {
+    addNoteBtn.addEventListener("click", openNoteModal);
+  }
 
+  const themeToggle = $("#themeToggle");
+  if (themeToggle) {
+    themeToggle.addEventListener("click", toggleTheme);
+  }
 
-  $("#themeToggle")
-    .addEventListener(
-      "click",
-      toggleTheme
-    );
-
-
-  $("#notificationBtn")
-    .addEventListener(
-      "click",
-      () => {
-
-        $("#notificationPanel")
-          .classList.toggle("show");
-
+  const notificationBtn = $("#notificationBtn");
+  if (notificationBtn) {
+    notificationBtn.addEventListener("click", () => {
+      const panel = $("#notificationPanel");
+      if (panel) {
+        panel.classList.toggle("show");
       }
-    );
+    });
+  }
 
+  const closeNotifications = $("#closeNotifications");
+  if (closeNotifications) {
+    closeNotifications.addEventListener("click", () => {
+      const panel = $("#notificationPanel");
+      if (panel) {
+        panel.classList.remove("show");
+      }
+    });
+  }
+
+  const modalClose = $("#modalClose");
+  if (modalClose) {
+    modalClose.addEventListener("click", closeModal);
+  }
+
+  const modalOverlay = $("#modalOverlay");
+  if (modalOverlay) {
+    modalOverlay.addEventListener("click", event => {
+      if (event.target === modalOverlay) {
+        closeModal();
+      }
+    });
+  }
+
+  const labSearch = $("#labSearch");
+  if (labSearch) {
+    labSearch.addEventListener("input", renderLabs);
+  }
+
+  const labFilter = $("#labFilter");
+  if (labFilter) {
+    labFilter.addEventListener("change", renderLabs);
+  }
+
+  const labDifficulty = $("#labDifficulty");
+  if (labDifficulty) {
+    labDifficulty.addEventListener("change", renderLabs);
+  }
+
+  const noteSearch = $("#noteSearch");
+  if (noteSearch) {
+    noteSearch.addEventListener("input", renderNotes);
+  }
+
+  const noteCategory = $("#noteCategory");
+  if (noteCategory) {
+    noteCategory.addEventListener("change", renderNotes);
+  }
+
+  const passwordCheckInput = $("#passwordCheckInput");
+  if (passwordCheckInput) {
+    passwordCheckInput.addEventListener("input", checkPassword);
+  }
+
+  const base64Encode = $("#base64Encode");
+  if (base64Encode) {
+    base64Encode.addEventListener("click", encodeBase64);
+  }
+
+  const base64Decode = $("#base64Decode");
+  if (base64Decode) {
+    base64Decode.addEventListener("click", decodeBase64);
+  }
+
+  const urlEncode = $("#urlEncode");
+  if (urlEncode) {
+    urlEncode.addEventListener("click", encodeURL);
+  }
+
+  const urlDecode = $("#urlDecode");
+  if (urlDecode) {
+    urlDecode.addEventListener("click", decodeURL);
+  }
+
+  const hashInput = $("#hashInput");
+  if (hashInput) {
+    hashInput.addEventListener("input", identifyHash);
+  }
+
+  $$(".timer-presets button").forEach(button => {
+    button.addEventListener("click", () => {
+      setTimer(Number(button.dataset.minutes));
+    });
+  });
+
+  const timerStart = $("#timerStart");
+  if (timerStart) {
+    timerStart.addEventListener("click", toggleTimer);
+  }
+
+  const timerReset = $("#timerReset");
+  if (timerReset) {
+    timerReset.addEventListener("click", resetTimer);
+  }
+
+  const darkModeSwitch = $("#darkModeSwitch");
+  if (darkModeSwitch) {
+    darkModeSwitch.addEventListener("change", event => {
+      settings.darkMode = event.target.checked;
+      save(STORAGE.settings, settings);
+      applyTheme();
+    });
+  }
+
+  const notificationSwitch = $("#notificationSwitch");
+  if (notificationSwitch) {
+    notificationSwitch.addEventListener("change", event => {
+      settings.notifications = event.target.checked;
+      save(STORAGE.settings, settings);
+
+      showToast(
+        settings.notifications
+          ? "Notifications enabled."
+          : "Notifications disabled."
+      );
+    });
+  }
+
+  const exportDataBtn = $("#exportDataBtn");
+  if (exportDataBtn) {
+    exportDataBtn.addEventListener("click", exportData);
+  }
+
+  const resetDataBtn = $("#resetDataBtn");
+  if (resetDataBtn) {
+    resetDataBtn.addEventListener("click", resetData);
+  }
+}
 
   $("#closeNotifications")
     .addEventListener(
