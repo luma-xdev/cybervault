@@ -2865,3 +2865,20 @@ console.log(
   "%cCybersecurity learning dashboard loaded successfully.",
   "color:#22d3ee"
 );
+const modal = document.getElementById("modal");
+const addRoomBtn = document.getElementById("addRoomBtn");
+const closeModal = document.getElementById("closeModal");
+
+addRoomBtn.addEventListener("click", () => {
+  modal.classList.add("show");
+});
+
+closeModal.addEventListener("click", () => {
+  modal.classList.remove("show");
+});
+
+modal.addEventListener("click", (event) => {
+  if (event.target === modal) {
+    modal.classList.remove("show");
+  }
+});
